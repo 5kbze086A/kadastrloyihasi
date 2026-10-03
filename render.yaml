@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: e-mulk
+    runtime: node
+    plan: free
+    # devDependencies (vite) build uchun kerak, shuning uchun --include=dev
+    # sample-data: FAQAT demo uchun to'qib chiqarilgan ma'lumot yaratadi
+    buildCommand: npm install --include=dev && npm run build && npm run sample-data
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: TRUST_PROXY
+        value: "1"
+      - key: DATA_FILE
+        value: ./data/data.xlsx
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: AUTH_USERS
+        sync: false   # Render deploy paytida so'raydi: login:parol

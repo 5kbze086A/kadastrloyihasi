@@ -1,0 +1,33 @@
+{
+  "name": "e-mulk",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --env-file=.env --watch server/index.js",
+    "dev:web": "vite",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "sample-data": "node scripts/make-sample-data.js",
+    "start:local": "node --env-file=.env server/index.js"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.1.0",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "vite": "^6.0.5"
+  },
+  "engines": {
+    "node": ">=20.6"
+  }
+}
